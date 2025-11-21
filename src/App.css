@@ -1,38 +1,177 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #f5f7ff 20%, #f0f4ff 70%, #e5e8f1);
+  color: #1f2933;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: 2rem clamp(1.5rem, 5vw, 4rem) 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.App-header p {
+  margin: 0.5rem 0 0;
+  color: #4b5563;
+}
+
+.task-form-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.task-form {
+  width: min(900px, 100%);
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.task-form .field {
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
+}
+
+.task-form label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.task-form input,
+.task-form textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  resize: none;
+}
+
+.task-form input:focus,
+.task-form textarea:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.primary-button {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(135deg, #6c63ff, #9f7aea);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s;
+  font: inherit;
+}
+
+.primary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary-button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.column {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
 }
 
-.App-link {
-  color: #61dafb;
+.column-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.column-header span {
+  font-size: 0.9rem;
+  background: #e0e7ff;
+  color: #4338ca;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.column-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+  cursor: grab;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.card p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin: auto 0;
+}
+
+@media (max-width: 640px) {
+  .task-form {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .column {
+    min-height: 220px;
   }
 }
